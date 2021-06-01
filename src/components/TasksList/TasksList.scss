@@ -1,0 +1,68 @@
+.taskList{
+
+  &__content{
+  display: flex;
+    flex-direction: column;
+  }
+  &__item{
+    font-size: 18px;
+    margin: 16px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #868684;
+  }
+  &__itemDone{
+    font-size: 18px;
+    margin: 16px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #868684;
+    /*background-color: #7ad828 ;*/
+    background-color: rgba(122, 216, 40, 0.5);
+
+  }
+
+  &__button-delete{
+    margin: 16px 12px;
+    transition: .3s;
+    background: none;
+    &:hover{
+      color: red;
+    }
+  }
+  &__button-done{
+    background: none;
+    margin: 16px 12px;
+    transition: .3s;
+    &:hover{
+      color: greenyellow;
+    }
+  }
+  &__button-undo{
+    background: none;
+    margin: 16px 12px;
+    transition: .3s;
+    &:hover{
+      color: white;
+    }
+  }
+  &__taskName{
+    font-size: 18px;
+    margin: 16px 12px;
+    min-width: 400px;
+  }
+  &__taskNameDone{
+    font-size: 18px;
+    margin: 16px 12px;
+    min-width: 400px;
+    text-decoration: line-through;
+
+  }
+  &__doneTask{}
+  font-size: 18px;
+  margin: 16px 12px;
+  &__doneTaskTitle{
+    padding: 40px;
+  }
+}
+
