@@ -1,4 +1,5 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 
 import './ToDo.css';
 
@@ -12,67 +13,51 @@ class ToDo extends React.Component {
       tasks: [],
       value: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
-    this.doneTask = this.doneTask.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({ value: e.target.value });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const { value } = this.state;
-    const { tasks } = this.state;
+    const { value, tasks } = this.state;
     if (value.trim() !== '') {
-      const name = value;
       this.setState({
-        tasks: [...tasks, { name, done: false, id: Math.random() }],
+        tasks: [...tasks, { name: value, done: false, id: nanoid() }],
         value: '',
       });
     }
   }
 
-  deleteTask(id) {
-    const { tasks } = this.state;
-    const newTasks = tasks.filter((it) => id !== it.id);
-    this.setState({
-      tasks: newTasks,
-    });
+  deleteTask = (id) => {
+    this.setState((state) => ({
+      tasks: state.tasks.filter((it) => id !== it.id),
+    }));
   }
 
-  doneTask(id) {
-    const { tasks } = this.state;
-    const newTasks = tasks.map((it) => (it.id === id ? { ...it, done: !it.done } : it));
-    this.setState({
-      tasks: newTasks,
-    });
+  doneTask = (id) => {
+    this.setState((state) => ({
+      tasks: state.tasks.map((it) => (it.id === id ? { ...it, done: !it.done } : it)),
+    }));
   }
 
   render() {
-    const { value } = this.state;
-    const { tasks } = this.state;
-    const { handleChange } = this;
-    const { handleSubmit } = this;
+    const { value, tasks } = this.state;
+    const { handleChange, handleSubmit } = this;
 
     return (
-      <div className="container">
-        <div className="addTask">
-          <AddTask
-            value={value}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-          />
-        </div>
-        <div className="tasksList">
-          <TasksList
-            tasks={tasks}
-            deleteTask={this.deleteTask}
-            doneTask={this.doneTask}
-          />
-        </div>
+      <div className="ToDo">
+        <AddTask
+          value={value}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+        />
+        <TasksList
+          tasks={tasks}
+          deleteTask={this.deleteTask}
+          doneTask={this.doneTask}
+        />
       </div>
     );
   }

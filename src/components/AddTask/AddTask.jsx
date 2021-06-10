@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import './AddTask.css';
 
 function AddTask(props) {
-  const { onSubmit } = props;
-  const { value } = props;
-  const { onChange } = props;
+  const { onSubmit, value, onChange } = props;
+
   return (
-    <form className="addTask" onSubmit={onSubmit}>
-      <div className="addTask__content">
-        <button className="addTask__button material-icons" type="submit">add</button>
+    <form className="AddTask" onSubmit={onSubmit}>
+      <div className="AddTask-content">
+        <button className="AddTask-button material-icons" type="submit">add</button>
         <input
-          className="addTask__input"
+          className="AddTask-input"
           type="text"
           placeholder="Добавить задачу"
           value={value}

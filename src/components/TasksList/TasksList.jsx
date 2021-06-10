@@ -5,64 +5,62 @@ import './TasksList.css';
 
 function TasksList(props) {
   const { tasks } = props;
-  const newTasks = tasks.filter((task) => task.done === false);
-  const doneTasks = tasks.filter((task) => task.done === true);
+  const uncompletedTasks = tasks.filter((task) => task.done === false);
+  const completedTasks = tasks.filter((task) => task.done === true);
 
   return (
-    <div className="taskList">
-      <div className="taskList__content">
-        {
-                    newTasks.map((task) => (
-                      <div className="taskList__item" key={task.id}>
-                        <button
-                          type="button"
-                          className="taskList__button-done material-icons"
-                          onClick={() => props.doneTask(task.id)}
-                        >
-                          done
-                        </button>
-                        <div
-                          className="taskList__taskName"
-                        >
-                          {task.name}
-                        </div>
-                        <button
-                          type="button"
-                          className="taskList__button-delete material-icons"
-                          onClick={() => props.deleteTask(task.id)}
-                        >
-                          delete
-                        </button>
-                      </div>
-                    ))
-                }
-        <span className="taskList__doneTaskTitle">Завершенные задачи:</span>
-        {
-                    doneTasks.map((task) => (
-                      <div className="taskList__itemDone">
-                        <button
-                          type="button"
-                          className="taskList__button-undo material-icons"
-                          onClick={() => props.doneTask(task.id)}
-                        >
-                          undo
-                        </button>
-                        <div
-                          className="taskList__taskNameDone"
-                        >
-                          {task.name}
-                        </div>
-                        <button
-                          type="button"
-                          className="taskList__button-delete material-icons"
-                          onClick={() => props.deleteTask(task.id)}
-                        >
-                          delete
-                        </button>
-                      </div>
-                    ))
-                }
-      </div>
+    <div className="TaskList">
+      {
+        uncompletedTasks.map((task) => (
+          <div className="TaskList-item" key={task.id}>
+            <button
+              type="button"
+              className="TaskList-buttonDone material-icons"
+              onClick={() => props.doneTask(task.id)}
+            >
+              done
+            </button>
+            <div
+              className="TaskList-taskName"
+            >
+              {task.name}
+            </div>
+            <button
+              type="button"
+              className="TaskList-buttonDelete material-icons"
+              onClick={() => props.deleteTask(task.id)}
+            >
+              delete
+            </button>
+          </div>
+        ))
+      }
+      <span className="TaskList-doneTaskTitle">Завершенные задачи:</span>
+      {
+        completedTasks.map((task) => (
+          <div className="TaskList-itemDone">
+            <button
+              type="button"
+              className="TaskList-buttonUndo material-icons"
+              onClick={() => props.doneTask(task.id)}
+            >
+              undo
+            </button>
+            <div
+              className="TaskList-taskNameDone"
+            >
+              {task.name}
+            </div>
+            <button
+              type="button"
+              className="TaskList-buttonDelete material-icons"
+              onClick={() => props.deleteTask(task.id)}
+            >
+              delete
+            </button>
+          </div>
+        ))
+      }
     </div>
   );
 }

@@ -1,0 +1,67 @@
+.TaskList{
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin: 16px 12px;
+}
+
+.TaskList-item{
+  font-size: 18px;
+  margin: 16px 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #868684;
+}
+
+.TaskList-buttonDone{
+  background: none;
+  margin: 16px 12px;
+  transition: .3s;
+}
+.TaskList-buttonDone:hover{
+  color: greenyellow;
+}
+
+.TaskList-taskName{
+  font-size: 18px;
+  margin: 16px 12px;
+  min-width: 400px;
+}
+
+.TaskList-buttonDelete{
+  margin: 16px 12px;
+  transition: .3s;
+  background: none;
+}
+.TaskList-buttonDelete:hover{
+  color: red;
+}
+
+.TaskList-doneTaskTitle{
+  padding: 40px;
+}
+
+.TaskList-itemDone{
+  font-size: 18px;
+  margin: 16px 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #868684;
+  background-color: rgba(122, 216, 40, 0.5);
+}
+
+.TaskList-buttonUndo{
+  background: none;
+  margin: 16px 12px;
+  transition: .3s;
+}
+.TaskList-buttonUndo:hover{
+  color: white;
+}
+
+.TaskList-taskNameDone{
+  font-size: 18px;
+  margin: 16px 12px;
+  min-width: 400px;
+  text-decoration: line-through;
+}
